@@ -21,3 +21,9 @@ Install python3
 python3 -m venv venv
 . venv/bin/activate
 ```
+To deploy dev use 
+
+```sh
+cd personal-site
+npm run dev
+```
