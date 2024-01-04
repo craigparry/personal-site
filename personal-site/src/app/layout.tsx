@@ -3,6 +3,10 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import ResponsiveAppBar from './components/Navbar'
 import Footer from './components/Footer'
+import React from 'react';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from './theme';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,15 +22,17 @@ export default function RootLayout({
 }) {
   return (
     <>
-    
-    <html lang="en">
-      <body className={inter.className}>
-        <ResponsiveAppBar/>
-        {children}
-        <Footer/>
-      </body>
-    </html>
+      <html lang="en">
+        <body className={inter.className}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <ResponsiveAppBar />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </body>
+      </html>
     </>
-    
+
   )
 }
