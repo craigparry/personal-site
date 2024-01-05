@@ -17,12 +17,11 @@ export default function Footer() {
                 position: 'fixed',
                 bottom: 0,
                 backgroundColor: theme.palette.primary.main,
-                color: theme.palette.text.primary,
             }}
             component="footer"
         >
             <Container maxWidth="sm">
-                <Typography variant="body2" color="text.secondary" align="center">
+                <Typography variant="body2" color='primary.contrastText' align="center">
                     {"Copyright © "}
                     <Link color="inherit" href="https://your-website.com/">
                         Your Website

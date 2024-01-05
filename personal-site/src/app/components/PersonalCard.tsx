@@ -21,8 +21,8 @@ export default function PersonalCard() {
                         Craig Parry
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        I am a software engineer, currently working or United HealthGroup. I am a competent, web developer, backend engineer, devops practitioner.
-                        This year I am aspiring to build more data pipelines, learn new devops tools and to learn and apply AI toolsets to my workflows.
+                        I am a software engineer currently working for United HealthGroup. I am a competent web developer, backend engineer, devops practitioner, and enjoy learning new technologies.
+                        This year I am aspiring to build more data pipelines, learn new cloud engineering tools and to apply AI tools to my workflows.
                     </Typography>
                 </CardContent>
                 <CardActions>

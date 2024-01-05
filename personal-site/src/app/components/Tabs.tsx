@@ -5,6 +5,11 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PersonalCard from './PersonalCard';
+import ProjectsGrid from './Projects'
+import BasicGrid from './ExperienceGrid';
+import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
+
 
 interface TabPanelProps {
     children?: React.ReactNode;
@@ -59,11 +64,11 @@ export default function BasicTabs() {
                 <PersonalCard />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                Item Two
+                <ProjectsGrid />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-                Item Three
+                <BasicGrid />
             </CustomTabPanel>
-        </Box>
+        </Box >
     );
 }

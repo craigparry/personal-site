@@ -15,6 +15,8 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useTheme } from '@mui/material/styles';
 
+import { useRouter } from 'next/navigation'
+
 const pages = ['resume'];
 
 function ResponsiveAppBar() {
@@ -37,16 +39,26 @@ function ResponsiveAppBar() {
     };
 
     const theme = useTheme();
+    const router = useRouter()
 
     return (
         <AppBar sx={{
             backgroundColor: theme.palette.primary.main,
-            color: theme.palette.text.primary,
-            padding: '2rem',
+            color: theme.palette.primary.contrastText,
+            padding: '0.5rem',
         }} position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <AdbIcon
+                        onClick={() => {
+                            router.push(window.location.protocol + "//" + window.location.host)
+                        }}
+                        sx={{
+                            display: {
+                                xs: 'none', md: 'flex'
+                            }, mr: 1
+                        }}
+                    />
                     <Typography
                         variant="h6"
                         noWrap
@@ -61,6 +73,9 @@ function ResponsiveAppBar() {
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
+                        onClick={() => {
+                            router.push(window.location.protocol + "//" + window.location.host)
+                        }}
                     >
                         CLP
                     </Typography>
@@ -70,17 +85,15 @@ function ResponsiveAppBar() {
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{ my: 2, color: theme.palette.primary.contrastText, display: 'block' }}
                             >
                                 {page}
                             </Button>
                         ))}
                     </Box>
-
-
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 }
 export default ResponsiveAppBar;
