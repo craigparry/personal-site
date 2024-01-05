@@ -1,9 +1,10 @@
 import PersonalCard from "./components/PersonalCard";
+import BasicTabs from "./components/Tabs";
 
 export default function Home() {
   return (
     <>
-      <PersonalCard/>
+      <BasicTabs />
     </>
   )
 }
