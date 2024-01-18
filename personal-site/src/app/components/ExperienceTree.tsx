@@ -14,6 +14,13 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { SvgIconProps } from '@mui/material/SvgIcon';
 import { TreeView } from '@mui/x-tree-view/TreeView';
 import { TreeItem, TreeItemProps, treeItemClasses } from '@mui/x-tree-view/TreeItem';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkIcon from '@mui/icons-material/Work';
+import ComputerIcon from '@mui/icons-material/Computer';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import LanIcon from '@mui/icons-material/Lan';
+
 
 declare module 'react' {
     interface CSSProperties {
@@ -112,6 +119,8 @@ const StyledTreeItem = React.forwardRef(function StyledTreeItem(
     );
 });
 
+const color = "#3c8039"
+const bgColor = "#e6f4ea"
 export default function ExperienceTreeView() {
     return (
         <TreeView
@@ -120,18 +129,23 @@ export default function ExperienceTreeView() {
             defaultCollapseIcon={<ArrowDropDownIcon />}
             defaultExpandIcon={<ArrowRightIcon />}
             defaultEndIcon={<div style={{ width: 24 }} />}
-            sx={{ height: 264, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+            sx={{ height: '100vh', flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
         >
-            <StyledTreeItem nodeId="1" labelText="All Mail" labelIcon={MailIcon} />
-            <StyledTreeItem nodeId="2" labelText="Trash" labelIcon={DeleteIcon} />
-            <StyledTreeItem nodeId="3" labelText="Categories" labelIcon={Label}>
+            <StyledTreeItem
+                onClick={() => { console.log('you clicked on work') }}
+                nodeId="3"
+                labelText="Work"
+                color={color}
+                bgColor={bgColor}
+                labelIcon={WorkIcon}
+            >
                 <StyledTreeItem
                     nodeId="5"
                     labelText="Social"
                     labelIcon={SupervisorAccountIcon}
                     labelInfo="90"
-                    color="#1a73e8"
-                    bgColor="#e8f0fe"
+                    color={color}
+                    bgColor={bgColor}
                     colorForDarkMode="#B8E7FB"
                     bgColorForDarkMode="#071318"
                 />
@@ -140,8 +154,8 @@ export default function ExperienceTreeView() {
                     labelText="Updates"
                     labelIcon={InfoIcon}
                     labelInfo="2,294"
-                    color="#e3742f"
-                    bgColor="#fcefe3"
+                    color={color}
+                    bgColor={bgColor}
                     colorForDarkMode="#FFE2B7"
                     bgColorForDarkMode="#191207"
                 />
@@ -150,8 +164,8 @@ export default function ExperienceTreeView() {
                     labelText="Forums"
                     labelIcon={ForumIcon}
                     labelInfo="3,566"
-                    color="#a250f5"
-                    bgColor="#f3e8fd"
+                    color={color}
+                    bgColor={bgColor}
                     colorForDarkMode="#D9B8FB"
                     bgColorForDarkMode="#100719"
                 />
@@ -160,13 +174,59 @@ export default function ExperienceTreeView() {
                     labelText="Promotions"
                     labelIcon={LocalOfferIcon}
                     labelInfo="733"
-                    color="#3c8039"
-                    bgColor="#e6f4ea"
+                    color={color}
+                    bgColor={bgColor}
                     colorForDarkMode="#CCE8CD"
                     bgColorForDarkMode="#0C130D"
                 />
             </StyledTreeItem>
-            <StyledTreeItem nodeId="4" labelText="History" labelIcon={Label} />
-        </TreeView>
+            <StyledTreeItem
+                onClick={() => { console.log('you clicked on education') }}
+                nodeId="4"
+                labelText="Education"
+                labelInfo='3'
+                color={color}
+                bgColor={bgColor}
+                labelIcon={SchoolIcon}
+            >
+                <StyledTreeItem
+                    onClick={() => { console.log('you clicked on cs') }}
+                    nodeId="9"
+                    labelText="Computer Science"
+                    color={color}
+                    bgColor={bgColor}
+                    labelInfo='2'
+                    labelIcon={ComputerIcon}
+                >
+                    <StyledTreeItem
+                        onClick={() => { console.log('you clicked on bachelors') }}
+                        nodeId="11"
+                        labelText="Bachelors"
+                        color={color}
+                        bgColor={bgColor}
+                        labelIcon={DeveloperBoardIcon}
+                    />
+                    <StyledTreeItem
+                        onClick={() => { console.log('you clicked on masters') }}
+                        nodeId="12"
+                        labelText="Masters"
+                        color={color}
+                        bgColor={bgColor}
+                        labelIcon={LanIcon}
+                    />
+                </StyledTreeItem>
+                <StyledTreeItem
+                    onClick={() => { console.log('you clicked on psych') }}
+                    nodeId="10"
+                    labelText="Psychology"
+                    color={color}
+                    bgColor={bgColor}
+                    labelIcon={PsychologyIcon}
+                />
+            </StyledTreeItem>
+
+
+
+        </TreeView >
     );
 }
