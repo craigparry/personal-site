@@ -1,24 +1,63 @@
+# Personal Website
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Demo link:
+Access my site at [google.com](https://google.com)
 
-First, run the development server:
+## Table of Content:
 
-```bash
+- [About The App](#about-the-app)
+- [Screenshots](#screenshots)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Approach](#approach)
+- [Status](#status)
+- [Credits](#credits)
+- [License](#license)
+
+## About The App
+[Name of project] is an app that ...
+
+## Screenshots
+
+`![Writing](https://unsplash.com/photos/VBPzRgd7gfc)`
+
+Picture by [Kelly Sikkema](https://unsplash.com/@kellysikkema)
+
+## Technologies
+I used `Next.js`, `css`,
+
+## Setup
+This Next.js app is create with create-next-app 
+
+```sh
+npx create-next-app@latest
+```
+
+### virtual env & installation
+
+Check Node version (req. Node v.18.17 or greater)
+
+[Install Next.js](https://nextjs.org/docs/getting-started/installation)
+
+```sh
+node --version
+```
+
+Install python3
+
+```sh 
+python3 -m venv venv
+. venv/bin/activate
+```
+To deploy dev use 
+
+```sh
+cd personal-site
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 
@@ -29,8 +68,16 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Approach
+I am applying React developement skills while learning the next.js framework. I have previously worked with Create React App and Vite for development and bundling my React applications.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Status
+My personal website is still in progress. `Version 1` will be out soon.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Credits
+List of contriubutors:
+- [Craig Parry](https://github.com/craigparry)
+
+## License
+
+MIT license @ [Craig Parry](https://github.com/craigparry)

@@ -3,21 +3,13 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { useTheme } from '@mui/material/styles';
-
 import { useRouter } from 'next/navigation'
 
-const pages = ['resume'];
+const pages = ['test'];
 
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -38,6 +30,16 @@ function ResponsiveAppBar() {
         setAnchorElUser(null);
     };
 
+    const onResumeClick = () => {
+        const pdfUrl = "Craig_Parry_Resume_1_17_24.pdf";
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = "Craig_Parry_Resume.pdf"; // specify the filename
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     const theme = useTheme();
     const router = useRouter()
 
@@ -49,47 +51,40 @@ function ResponsiveAppBar() {
         }} position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon
-                        onClick={() => {
-                            router.push(window.location.protocol + "//" + window.location.host)
-                        }}
-                        sx={{
-                            display: {
-                                xs: 'none', md: 'flex'
-                            }, mr: 1
-                        }}
-                    />
                     <Typography
-                        variant="h6"
+                        variant="h5"
                         noWrap
                         component="a"
-                        // href="#app-bar-with-responsive-menu"
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            fontFamily: 'Cursive',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
-                        onClick={() => {
-                            router.push(window.location.protocol + "//" + window.location.host)
-                        }}
+                        href={'http://localhost:3000'}
                     >
                         CLP
                     </Typography>
-
                     <Box display="flex" justifyContent="flex-end" sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                        {/* {pages.map((page) => (
                             <Button
                                 key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: theme.palette.primary.contrastText, display: 'block' }}
+                                onClick={() => { router.push(window.location.protocol + "//" + window.location.host + '/' + page.toLowerCase()) }}
+                                sx={{ my: 1, color: theme.palette.primary.contrastText, display: 'block' }}
                             >
                                 {page}
                             </Button>
-                        ))}
+                        ))} */}
+                        <Button
+                            key="Resume"
+                            onClick={onResumeClick}
+                            sx={{ my: 1, color: theme.palette.primary.contrastText, display: 'block' }}
+                        >
+                            Resume
+                        </Button>
                     </Box>
                 </Toolbar>
             </Container>
