@@ -1,10 +1,8 @@
+'use client'
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import MailIcon from '@mui/icons-material/Mail';
-import DeleteIcon from '@mui/icons-material/Delete';
-import Label from '@mui/icons-material/Label';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import InfoIcon from '@mui/icons-material/Info';
 import ForumIcon from '@mui/icons-material/Forum';
@@ -20,6 +18,7 @@ import ComputerIcon from '@mui/icons-material/Computer';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import LanIcon from '@mui/icons-material/Lan';
+import { experience } from './Experience'
 
 
 declare module 'react' {
@@ -121,18 +120,25 @@ const StyledTreeItem = React.forwardRef(function StyledTreeItem(
 
 const color = "#3c8039"
 const bgColor = "#e6f4ea"
-export default function ExperienceTreeView() {
+interface ETVProps {
+    setExperience: any,
+    setHeader: any,
+}
+export default function ExperienceTreeView({ setExperience, setHeader }: ETVProps) {
     return (
         <TreeView
             aria-label="gmail"
-            defaultExpanded={['3']}
+            defaultExpanded={['0']}
             defaultCollapseIcon={<ArrowDropDownIcon />}
             defaultExpandIcon={<ArrowRightIcon />}
             defaultEndIcon={<div style={{ width: 24 }} />}
             sx={{ height: '100vh', flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
         >
             <StyledTreeItem
-                onClick={() => { console.log('you clicked on work') }}
+                onClick={() => {
+                    setHeader(experience.work.description);
+                    setExperience({})
+                }}
                 nodeId="3"
                 labelText="Work"
                 color={color}
@@ -140,10 +146,14 @@ export default function ExperienceTreeView() {
                 labelIcon={WorkIcon}
             >
                 <StyledTreeItem
+                    onClick={() => {
+                        setHeader("");
+                        setExperience(experience.work["United Health Care"]);
+                    }}
                     nodeId="5"
-                    labelText="Social"
+                    labelText={experience.work["United Health Care"].Company}
                     labelIcon={SupervisorAccountIcon}
-                    labelInfo="90"
+                    labelInfo={experience.work["United Health Care"].Date}
                     color={color}
                     bgColor={bgColor}
                     colorForDarkMode="#B8E7FB"
@@ -151,9 +161,13 @@ export default function ExperienceTreeView() {
                 />
                 <StyledTreeItem
                     nodeId="6"
-                    labelText="Updates"
+                    onClick={() => {
+                        setHeader("");
+                        setExperience(experience.work["OpenEye Scientific Software"]);
+                    }}
+                    labelText={experience.work["OpenEye Scientific Software"].Company}
                     labelIcon={InfoIcon}
-                    labelInfo="2,294"
+                    labelInfo={experience.work["OpenEye Scientific Software"].Date}
                     color={color}
                     bgColor={bgColor}
                     colorForDarkMode="#FFE2B7"
@@ -161,27 +175,24 @@ export default function ExperienceTreeView() {
                 />
                 <StyledTreeItem
                     nodeId="7"
-                    labelText="Forums"
+                    onClick={() => {
+                        setHeader("");
+                        setExperience(experience.work["UNM"]);
+                    }}
+                    labelText={experience.work["UNM"].Company}
                     labelIcon={ForumIcon}
-                    labelInfo="3,566"
+                    labelInfo={experience.work["UNM"].Date}
                     color={color}
                     bgColor={bgColor}
                     colorForDarkMode="#D9B8FB"
                     bgColorForDarkMode="#100719"
                 />
-                <StyledTreeItem
-                    nodeId="8"
-                    labelText="Promotions"
-                    labelIcon={LocalOfferIcon}
-                    labelInfo="733"
-                    color={color}
-                    bgColor={bgColor}
-                    colorForDarkMode="#CCE8CD"
-                    bgColorForDarkMode="#0C130D"
-                />
             </StyledTreeItem>
             <StyledTreeItem
-                onClick={() => { console.log('you clicked on education') }}
+                onClick={() => {
+                    setHeader(experience.school.description);
+                    setExperience({});
+                }}
                 nodeId="4"
                 labelText="Education"
                 labelInfo='3'
@@ -190,7 +201,10 @@ export default function ExperienceTreeView() {
                 labelIcon={SchoolIcon}
             >
                 <StyledTreeItem
-                    onClick={() => { console.log('you clicked on cs') }}
+                    onClick={() => {
+                        setHeader(experience.school.computer.description);
+                        setExperience({});
+                    }}
                     nodeId="9"
                     labelText="Computer Science"
                     color={color}
@@ -199,34 +213,43 @@ export default function ExperienceTreeView() {
                     labelIcon={ComputerIcon}
                 >
                     <StyledTreeItem
-                        onClick={() => { console.log('you clicked on bachelors') }}
+                        onClick={() => {
+                            setHeader("");
+                            setExperience(experience.school.computer.bachelors);
+                        }}
                         nodeId="11"
-                        labelText="Bachelors"
+                        labelText={experience.school.computer.bachelors.Degree}
+                        labelInfo={experience.school.computer.bachelors.Date}
                         color={color}
                         bgColor={bgColor}
                         labelIcon={DeveloperBoardIcon}
                     />
                     <StyledTreeItem
-                        onClick={() => { console.log('you clicked on masters') }}
+                        onClick={() => {
+                            setHeader("");
+                            setExperience(experience.school.computer.masters);
+                        }}
                         nodeId="12"
-                        labelText="Masters"
+                        labelText={experience.school.computer.masters.Degree}
+                        labelInfo={experience.school.computer.masters.Date}
                         color={color}
                         bgColor={bgColor}
                         labelIcon={LanIcon}
                     />
                 </StyledTreeItem>
                 <StyledTreeItem
-                    onClick={() => { console.log('you clicked on psych') }}
+                    onClick={() => {
+                        setHeader("");
+                        setExperience(experience.school.psychology.bachelors);
+                    }}
                     nodeId="10"
-                    labelText="Psychology"
+                    labelText={experience.school.psychology.bachelors.Degree}
+                    labelInfo={experience.school.psychology.bachelors.Date}
                     color={color}
                     bgColor={bgColor}
                     labelIcon={PsychologyIcon}
                 />
             </StyledTreeItem>
-
-
-
         </TreeView >
     );
 }
