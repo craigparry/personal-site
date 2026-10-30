@@ -2,13 +2,11 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PersonalCard from './PersonalCard';
 import ProjectsGrid from './Projects'
 import BasicGrid from './ExperienceGrid';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
+import Register from './ApiPlayground';
 
 
 interface TabPanelProps {
@@ -58,6 +56,7 @@ export default function BasicTabs() {
                     <Tab label="Personal Info" {...a11yProps(0)} />
                     <Tab label="Projects" {...a11yProps(1)} />
                     <Tab label="Work and Education" {...a11yProps(2)} />
+                    <Tab label="Register User" {...a11yProps(3)} />
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>
@@ -68,6 +67,9 @@ export default function BasicTabs() {
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
                 <BasicGrid />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={3}>
+                <Register />
             </CustomTabPanel>
         </Box >
     );

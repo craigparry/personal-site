@@ -22,7 +22,7 @@ export default function Footer() {
             }}
             component="footer"
         >
-            <Box display="flex" justifyContent="flex-end">
+            <Box sx={{display:"flex", justifyContent:"flex-end"}}>
                 <a target="_blank" href="https://github.com/craigparry" rel="noopener noreferrer">
                     <IconButton onClick={() => { console.log('github') }} size='small' >
                         <GitHubIcon sx={{ color: theme.palette.primary.contrastText }} />
@@ -36,7 +36,7 @@ export default function Footer() {
             </Box>
             <Typography variant="body2" color='primary.contrastText' align="center" >
                 {"Copyright © "}
-                <Link color="inherit" href="https://google.com/" rel="noopener noreferrer">
+                <Link color="inherit" href="/" rel="noopener noreferrer">
                     Your Website
                 </Link>{" "}
                 {new Date().getFullYear()}

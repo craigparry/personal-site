@@ -4,9 +4,7 @@ import './globals.css'
 import ResponsiveAppBar from './components/Navbar'
 import Footer from './components/Footer'
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import theme from './theme';
+import MuiProvider from './MuiProvider'; // Import the client wrapper
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,18 +19,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <html lang="en">
-        <body className={inter.className}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <ResponsiveAppBar />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </body>
-      </html>
-    </>
-
+    <html lang="en">
+      <body className={inter.className}>
+        <MuiProvider>
+          <ResponsiveAppBar />
+          {children}
+          <Footer />
+        </MuiProvider>
+      </body>
+    </html>
   )
 }
