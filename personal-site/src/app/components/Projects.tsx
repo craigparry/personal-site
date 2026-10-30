@@ -5,10 +5,11 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
+import { Box } from '@mui/material';
 
 export default function ProjectsGrid() {
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Box style={{ display: 'flex', justifyContent: 'center' }}>
             <ImageList sx={{ width: 500, height: 450 }}>
                 <ImageListItem key="Subheader" cols={2}>
                     {/* <ListSubheader component="div">December</ListSubheader> */}
@@ -36,7 +37,7 @@ export default function ProjectsGrid() {
                     </ImageListItem>
                 ))}
             </ImageList>
-        </div>
+        </Box>
     );
 }
 

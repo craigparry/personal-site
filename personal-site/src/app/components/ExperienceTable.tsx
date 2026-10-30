@@ -42,7 +42,7 @@ export default function BasicTable({ tableData, header }: TableProps) {
                 <TableBody>
                     {tableData.map((row: any) => (
                         <TableRow
-                            key={row.name}
+                            key={row[0]}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">

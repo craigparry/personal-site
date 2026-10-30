@@ -6,11 +6,10 @@ import Typography from '@mui/material/Typography';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import InfoIcon from '@mui/icons-material/Info';
 import ForumIcon from '@mui/icons-material/Forum';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { SvgIconProps } from '@mui/material/SvgIcon';
-import { TreeView } from '@mui/x-tree-view/TreeView';
+import { SimpleTreeView } from '@mui/x-tree-view'
 import { TreeItem, TreeItemProps, treeItemClasses } from '@mui/x-tree-view/TreeItem';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkIcon from '@mui/icons-material/Work';
@@ -61,7 +60,7 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
             color: 'inherit',
         },
     },
-    [`& .${treeItemClasses.group}`]: {
+    [`& .${treeItemClasses.groupTransition}`]: {
         marginLeft: 0,
         [`& .${treeItemClasses.content}`]: {
             paddingLeft: theme.spacing(2),
@@ -126,31 +125,35 @@ interface ETVProps {
 }
 export default function ExperienceTreeView({ setExperience, setHeader }: ETVProps) {
     return (
-        <TreeView
+        <SimpleTreeView
             aria-label="gmail"
-            defaultExpanded={['0']}
-            defaultCollapseIcon={<ArrowDropDownIcon />}
-            defaultExpandIcon={<ArrowRightIcon />}
-            defaultEndIcon={<div style={{ width: 24 }} />}
+            defaultExpandedItems={['3', '4']}
+            slots={{
+                collapseIcon: ArrowDropDownIcon,
+                expandIcon: ArrowRightIcon,
+                endIcon: () => <div style={{ width: 24 }} />,
+            }}
             sx={{ height: '100vh', flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
         >
             <StyledTreeItem
-                onClick={() => {
+                onClick={(event) => {
+                    event.stopPropagation();
                     setHeader(experience.work.description);
                     setExperience({})
                 }}
-                nodeId="3"
+                itemId="3"
                 labelText="Work"
                 color={color}
                 bgColor={bgColor}
                 labelIcon={WorkIcon}
             >
                 <StyledTreeItem
-                    onClick={() => {
+                    onClick={(event) => {
+                        event.stopPropagation();
                         setHeader("");
                         setExperience(experience.work["United Health Care"]);
                     }}
-                    nodeId="5"
+                    itemId="5"
                     labelText={experience.work["United Health Care"].Company}
                     labelIcon={SupervisorAccountIcon}
                     labelInfo={experience.work["United Health Care"].Date}
@@ -160,8 +163,9 @@ export default function ExperienceTreeView({ setExperience, setHeader }: ETVProp
                     bgColorForDarkMode="#071318"
                 />
                 <StyledTreeItem
-                    nodeId="6"
-                    onClick={() => {
+                    itemId="6"
+                    onClick={(event) => {
+                        event.stopPropagation();
                         setHeader("");
                         setExperience(experience.work["OpenEye Scientific Software"]);
                     }}
@@ -174,8 +178,9 @@ export default function ExperienceTreeView({ setExperience, setHeader }: ETVProp
                     bgColorForDarkMode="#191207"
                 />
                 <StyledTreeItem
-                    nodeId="7"
-                    onClick={() => {
+                    itemId="7"
+                    onClick={(event) => {
+                        event.stopPropagation();
                         setHeader("");
                         setExperience(experience.work["UNM"]);
                     }}
@@ -189,11 +194,12 @@ export default function ExperienceTreeView({ setExperience, setHeader }: ETVProp
                 />
             </StyledTreeItem>
             <StyledTreeItem
-                onClick={() => {
+                onClick={(event) => {
+                    event.stopPropagation();
                     setHeader(experience.school.description);
                     setExperience({});
                 }}
-                nodeId="4"
+                itemId="4"
                 labelText="Education"
                 labelInfo='3'
                 color={color}
@@ -201,11 +207,12 @@ export default function ExperienceTreeView({ setExperience, setHeader }: ETVProp
                 labelIcon={SchoolIcon}
             >
                 <StyledTreeItem
-                    onClick={() => {
+                    onClick={(event) => {
+                        event.stopPropagation();
                         setHeader(experience.school.computer.description);
                         setExperience({});
                     }}
-                    nodeId="9"
+                    itemId="9"
                     labelText="Computer Science"
                     color={color}
                     bgColor={bgColor}
@@ -213,11 +220,12 @@ export default function ExperienceTreeView({ setExperience, setHeader }: ETVProp
                     labelIcon={ComputerIcon}
                 >
                     <StyledTreeItem
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.stopPropagation();
                             setHeader("");
                             setExperience(experience.school.computer.bachelors);
                         }}
-                        nodeId="11"
+                        itemId="11"
                         labelText={experience.school.computer.bachelors.Degree}
                         labelInfo={experience.school.computer.bachelors.Date}
                         color={color}
@@ -225,11 +233,12 @@ export default function ExperienceTreeView({ setExperience, setHeader }: ETVProp
                         labelIcon={DeveloperBoardIcon}
                     />
                     <StyledTreeItem
-                        onClick={() => {
+                        onClick={(event) => {
+                            event.stopPropagation();
                             setHeader("");
                             setExperience(experience.school.computer.masters);
                         }}
-                        nodeId="12"
+                        itemId="12"
                         labelText={experience.school.computer.masters.Degree}
                         labelInfo={experience.school.computer.masters.Date}
                         color={color}
@@ -238,11 +247,12 @@ export default function ExperienceTreeView({ setExperience, setHeader }: ETVProp
                     />
                 </StyledTreeItem>
                 <StyledTreeItem
-                    onClick={() => {
+                    onClick={(event) => {
+                        event.stopPropagation();
                         setHeader("");
                         setExperience(experience.school.psychology.bachelors);
                     }}
-                    nodeId="10"
+                    itemId="10"
                     labelText={experience.school.psychology.bachelors.Degree}
                     labelInfo={experience.school.psychology.bachelors.Date}
                     color={color}
@@ -250,6 +260,6 @@ export default function ExperienceTreeView({ setExperience, setHeader }: ETVProp
                     labelIcon={PsychologyIcon}
                 />
             </StyledTreeItem>
-        </TreeView >
+        </SimpleTreeView>
     );
 }

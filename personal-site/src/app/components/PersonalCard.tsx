@@ -5,10 +5,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import {Box} from '@mui/material';
 
 export default function PersonalCard() {
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Box style={{ display: 'flex', justifyContent: 'center' }}>
             <Card sx={{ align: 'center', maxWidth: '50%' }}>
                 <CardMedia
                     component="img"
@@ -30,6 +31,6 @@ export default function PersonalCard() {
                     <Button size="small">Learn More</Button>
                 </CardActions>
             </Card>
-        </div>
+        </Box>
     );
 }

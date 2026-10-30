@@ -15,11 +15,12 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export default function BasicGrid() {
-    const [experienceDescripiton, setExperienceDescription] = React.useState<{}>({});
+    const [experienceDescripiton, setExperienceDescription] = React.useState({});
     const [listofExperience, setListofExperience] = React.useState<[]>([]);
     const [header, setHeader] = React.useState<string>("Please select a path of experience on the dropdown menu.");
 
     React.useEffect(() => {
+        console.log("experienceDescripiton", experienceDescripiton)
         let tempList: any = []
         Object.entries(experienceDescripiton).forEach(([key, index]) => {
             tempList.push([key, index]);
@@ -29,10 +30,10 @@ export default function BasicGrid() {
 
     return (
         <Grid container spacing={2}>
-            <Grid item xs={4}>
+            <Grid size={4}>
                 <ExperienceTreeView setExperience={setExperienceDescription} setHeader={setHeader} />
             </Grid>
-            <Grid item xs={8} >
+            <Grid size={8} >
                 <ExperienceTable tableData={listofExperience} header={header}></ExperienceTable>
             </Grid>
         </Grid>
