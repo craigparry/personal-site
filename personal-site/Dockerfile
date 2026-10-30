@@ -63,6 +63,10 @@ EXPOSE 3000
 
 ENV PORT=3000
 
+# Accept the argument from docker-compose and set it as an env variable for the build step
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+
 # hostname binds to localhost by default
 ENV HOSTNAME="0.0.0.0"
 

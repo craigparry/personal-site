@@ -69,3 +69,9 @@ to build the docker container
  docker build -t personal-site .
  docker run -d --rm -p 3000:3000 --name personal-site personal-site
 ```
+
+use docker compose to spin up the application
+
+```sh
+docker compose up --build -d
+```

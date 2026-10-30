@@ -1,0 +1,29 @@
+services:
+  # --- Backend Service (FastAPI) ---
+  backend:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: fastapi-alpine
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=production
+    restart: always
+
+  # --- Frontend Service (Next.js) ---
+  frontend:
+    build:
+      context: ./personal-site
+      dockerfile: Dockerfile
+      args:
+        # 1. Injects the public URL into the static JS build for the browser
+        - NEXT_PUBLIC_API_URL=http://localhost:8000
+    container_name: personal-site
+    ports:
+      - "3000:3000"
+    environment:
+      - SERVER_API_URL=http://backend:8000
+    restart: always
+    depends_on:
+      - backend

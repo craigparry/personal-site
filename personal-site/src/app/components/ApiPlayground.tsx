@@ -25,10 +25,23 @@ export default function Register() {
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         try {
-            const response = await axios.post('/api/backend/users', formValues);
+            const isServer = typeof window === 'undefined';
+
+            // If on server, call container directly. If on client, call via localhost browser routing.
+            const API_URL = isServer 
+            ? process.env.SERVER_API_URL 
+            : process.env.NEXT_PUBLIC_API_URL;
+
+            console.log(`${API_URL}/users`);
+            console.log(`${process.env.NEXT_PUBLIC_API_URL} ${process.env.SERVER_API_URL}`);
+
+            const response = await axios.post(`${API_URL}/users`, formValues);
             console.log(response.data);
         } catch (error:any) {
-            console.error('Registration failed:', error.message);
+            console.error(
+                'Registration failed:',
+                error.response?.data ?? error.message
+            );
         }
     }
 
@@ -39,7 +52,6 @@ export default function Register() {
                 component="form"
                 onSubmit={handleSubmit}
                 sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' } }}
-                noValidate
                 autoComplete="off"
                 >
                 <div>
@@ -62,7 +74,7 @@ export default function Register() {
                     <TextField
                     required
                     id="email"
-                    type="text"
+                    type="email"
                     label="Email"
                     value={formValues.email}
                     onChange={handleChange('email')}
