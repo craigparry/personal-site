@@ -30,7 +30,7 @@ export default function Register() {
             console.log('API_URL:', process.env.NEXT_PUBLIC_ENVIRONMENT);
             console.log('API_URL:', API_URL);
             const response = await axios.post(
-            `${API_URL}/users`,
+            `${API_URL}/users/`,
             formValues
             );
             console.log('Registration successful:', response.data);

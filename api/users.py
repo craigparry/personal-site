@@ -36,7 +36,7 @@ USERS_DB = [
 
 
 # --- ENDPOINTS ---
-
+@router.post("", response_model=UserOut, status_code=status.HTTP_201_CREATED)
 @router.post("/", response_model=UserOut, status_code=status.HTTP_201_CREATED)
 def create_user(user_in: UserCreate):
     """
@@ -61,7 +61,7 @@ def create_user(user_in: UserCreate):
     USERS_DB.append(new_user)
     return new_user
 
-
+@router.get("", response_model=List[UserOut])
 @router.get("/", response_model=List[UserOut])
 def get_users(skip: int = 0, limit: int = 10):
     """
@@ -69,8 +69,8 @@ def get_users(skip: int = 0, limit: int = 10):
     """
     return USERS_DB[skip : skip + limit]
 
-
 @router.get("/{user_id}", response_model=UserOut)
+@router.get("/{user_id}/", response_model=UserOut)
 def get_user_by_id(user_id: int):
     """
     Get a single user by their path parameter ID.
