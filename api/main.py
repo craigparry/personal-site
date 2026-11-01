@@ -2,15 +2,19 @@ from fastapi import FastAPI
 # Assuming your router file is named 'users.py'
 from users import router as users_router 
 from fastapi.middleware.cors import CORSMiddleware
+from os import getenv
 
 # Initialize the core FastAPI application instance
 app = FastAPI(
     title="User Management API",
     version="1.0.0"
 )
-origins = [
-    "http://localhost:3000",
-]
+origins = []
+FRONTEND_URL = getenv(
+    "FRONTEND_URL",
+    "http://localhost:3000"
+)
+origins.append(FRONTEND_URL)
 
 app.add_middleware(
     CORSMiddleware,
