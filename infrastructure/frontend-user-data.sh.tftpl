@@ -1,0 +1,37 @@
+#!/bin/bash
+set -euxo pipefail
+
+# Install and start Docker
+dnf update -y
+dnf install -y docker
+systemctl enable --now docker
+
+# Authenticate with Amazon ECR
+aws ecr get-login-password --region ${aws_region} \
+  | docker login --username AWS --password-stdin ${ecr_registry}
+
+# Pull the Next.js image
+docker pull ${nextjs_image}
+
+# Write the Nginx configuration supplied by Terraform
+mkdir -p /opt/personal-site/nginx
+
+cat > /opt/personal-site/nginx/default.conf <<'NGINX'
+${nginx_conf}
+NGINX
+
+# Start Next.js, accessible only from the frontend instance itself
+docker run -d \
+  --name nextjs \
+  --restart unless-stopped \
+  -p 3000:3000 \
+  ${nextjs_image}
+
+# Start Nginx as the public entry point
+docker run -d \
+  --name personal-site-nginx \
+  --restart unless-stopped \
+  --add-host=host.docker.internal:host-gateway \
+  -p 80:80 \
+  -v /opt/personal-site/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro \
+  nginx:latest
