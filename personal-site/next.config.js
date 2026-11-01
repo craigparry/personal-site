@@ -5,7 +5,7 @@ const nextConfig = {
         return [
         {
             // Add /:path* to forward any sub-routes correctly
-            source: '/api/backend/:path*',
+            source: '/api/:path*',
             // Match your backend's expected trailing slash structure
             destination: 'http://localhost:8000/:path*/', 
         },

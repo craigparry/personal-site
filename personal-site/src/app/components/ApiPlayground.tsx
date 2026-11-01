@@ -25,18 +25,14 @@ export default function Register() {
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         try {
-            const isServer = typeof window === 'undefined';
 
-            // If on server, call container directly. If on client, call via localhost browser routing.
-            const API_URL = isServer 
-            ? process.env.SERVER_API_URL 
-            : process.env.NEXT_PUBLIC_API_URL;
+            const API_URL = "/api";
+            const response = await axios.post(
+            `${API_URL}/users`,
+            formValues
+            );
+            console.log('Registration successful:', response.data);
 
-            console.log(`${API_URL}/users`);
-            console.log(`${process.env.NEXT_PUBLIC_API_URL} ${process.env.SERVER_API_URL}`);
-
-            const response = await axios.post(`${API_URL}/users`, formValues);
-            console.log(response.data);
         } catch (error:any) {
             console.error(
                 'Registration failed:',
