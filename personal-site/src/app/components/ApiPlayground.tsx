@@ -26,7 +26,9 @@ export default function Register() {
         event.preventDefault();
         try {
 
-            const API_URL = "/api";
+            const API_URL = process.env.NEXT_PUBLIC_ENVIRONMENT == 'DEV' ? "http://localhost:8000" : "/api";
+            console.log('API_URL:', process.env.NEXT_PUBLIC_ENVIRONMENT);
+            console.log('API_URL:', API_URL);
             const response = await axios.post(
             `${API_URL}/users`,
             formValues

@@ -67,7 +67,7 @@ to build the docker container
 
 ```sh
  docker build -t personal-site .
- docker run -d --rm -p 3000:3000 --name personal-site personal-site
+ docker run -d --rm -p 3000:3000 --name personal-site personal-site --build-arg NEXT_PUBLIC_ENVIRONMENT=DEV
 ```
 
 use docker compose to spin up the application

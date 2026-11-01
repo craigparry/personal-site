@@ -27,6 +27,10 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
+# Accept the argument from docker-compose and set it as an env variable for the build step
+ARG NEXT_PUBLIC_ENVIRONMENT
+ENV NEXT_PUBLIC_ENVIRONMENT=$NEXT_PUBLIC_ENVIRONMENT
+
 RUN \
     if [ -f package-lock.json ]; then npm run build; \
     elif [ -f yarn.lock ]; then yarn build; \
@@ -62,10 +66,6 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT=3000
-
-# Accept the argument from docker-compose and set it as an env variable for the build step
-ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
 # hostname binds to localhost by default
 ENV HOSTNAME="0.0.0.0"
